@@ -1,6 +1,6 @@
 import type { LeaderboardResponse, AddScoreResponse } from '../types';
 
-const API_URL = (import.meta.env.VITE_API_URL as string | undefined) ?? 'http://localhost:5001/api';
+const API_URL = (import.meta.env.VITE_API_URL as string | undefined) ?? 'https://panteon-backend.onrender.com/api';
 
 async function get<T>(path: string): Promise<T> {
   const response = await fetch(`${API_URL}${path}`);
