@@ -3,8 +3,8 @@
 A high-performance, stateless leaderboard and weekly reward distribution system designed to handle high concurrency (conceptually scaling to 2M+ DAU). Built completely with TypeScript across the stack.
 
 ## 🚀 Live Demo
-- **Frontend (Vercel):** [BURAYA_VERCEL_LINKINIZI_YAZIN]
-- **Backend API (Render):** [BURAYA_RENDER_LINKINIZI_YAZIN]
+- **Frontend (Vercel):** https://panteon-demo-leaderboard.vercel.app/
+- **Backend API (Render):** https://panteon-backend.onrender.com/api
 
 *(Note: The backend is deployed on a free Render instance, so the initial request might take ~50 seconds to spin up if the server has been idle.)*
 
