@@ -14,12 +14,14 @@ export default function App() {
   useEffect(() => {
     let mounted = true;
 
-    const load = async () => {
+    const loadData = async () => {
       try {
-        const result = await leaderboardApi.getLeaderboard(currentUserId);
-        if (mounted) {
-          setData(result);
-          setHasError(false);
+        if (!document.hidden) {
+          const result = await leaderboardApi.getLeaderboard(currentUserId);
+          if (mounted) {
+            setData(result);
+            setHasError(false);
+          }
         }
       } catch (err) {
         console.error("Leaderboard fetch error:", err);
@@ -29,11 +31,11 @@ export default function App() {
       }
     };
 
-    load();
-    const id = setInterval(load, 5000);
+    loadData();
+    const interval = setInterval(loadData, 30000);
     return () => {
       mounted = false;
-      clearInterval(id);
+      clearInterval(interval);
     };
   }, [currentUserId]);
 
