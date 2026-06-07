@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { PlayerRow } from './PlayerRow';
-import type { Player } from '../types';
+import { useState } from "react";
+import { PlayerRow } from "./PlayerRow";
+import type { Player } from "../types";
 
 export interface StickyRankBarProps {
   currentUser: Player;
@@ -8,7 +8,11 @@ export interface StickyRankBarProps {
   currentUserId: string;
 }
 
-export function StickyRankBar({ currentUser, surroundingPlayers, currentUserId }: StickyRankBarProps) {
+export function StickyRankBar({
+  currentUser,
+  surroundingPlayers,
+  currentUserId,
+}: StickyRankBarProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -16,7 +20,9 @@ export function StickyRankBar({ currentUser, surroundingPlayers, currentUserId }
       <div className="max-w-3xl mx-auto">
         <div
           className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${
-            expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+            expanded
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
           }`}
         >
           <div className="overflow-hidden">
@@ -35,9 +41,9 @@ export function StickyRankBar({ currentUser, surroundingPlayers, currentUserId }
 
         <button
           onClick={() => setExpanded((e) => !e)}
-          className="w-full flex items-center gap-4 px-4 py-2.5 text-left hover:bg-white/[0.03] transition-colors"
+          className="w-full flex items-center gap-2 sm:gap-4 px-3 sm:px-4 py-2.5 text-left hover:bg-white/[0.03] transition-colors"
         >
-          <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400 shrink-0">
+          <span className="hidden sm:inline-block text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400 shrink-0">
             Senin sıran
           </span>
           <span className="font-mono text-xs text-slate-300 truncate flex-1">
@@ -47,20 +53,17 @@ export function StickyRankBar({ currentUser, surroundingPlayers, currentUserId }
             #{currentUser.rank}
           </span>
           <span className="font-mono text-xs text-emerald-400 tabular-nums shrink-0">
-            {currentUser.score.toLocaleString('tr-TR')}
+            {currentUser.score.toLocaleString("tr-TR")}
           </span>
           <span
             className={`text-slate-500 text-[10px] shrink-0 select-none transition-transform duration-300 ${
-              expanded ? 'rotate-180' : ''
+              expanded ? "rotate-180" : ""
             }`}
           >
             ▲
           </span>
         </button>
-
       </div>
     </div>
   );
 }
-
-

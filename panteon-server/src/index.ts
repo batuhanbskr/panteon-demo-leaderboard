@@ -1,10 +1,9 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import pool from "./config/postgres";
-import redisClient from "./config/redis";
 import leaderboardRoutes from "./routes/leaderboard-route";
 import { startWeeklyRewardCron } from "./jobs/weeklyReward";
+import { startChaosBot } from "./jobs/simulationBot";
 
 dotenv.config();
 
@@ -24,4 +23,5 @@ app.listen(PORT, async () => {
 
   //CRON u cagirdik
   startWeeklyRewardCron();
+  startChaosBot();
 });

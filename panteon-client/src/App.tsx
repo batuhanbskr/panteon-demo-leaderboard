@@ -58,11 +58,12 @@ export default function App() {
   const isInTop100 =
     data?.top100.some((p) => p.userId === currentUserId) ?? false;
   const topPlayerId = data?.top100[0]?.userId;
+  const lastPlayerId = data?.top100?.[data.top100.length - 1]?.userId;
 
   return (
     <div className="h-screen overflow-hidden flex flex-col bg-[#0f172a]">
       {errorMessage}
-      <div className="max-w-3xl mx-auto px-4 pt-8 pb-20 w-full flex flex-col flex-1 min-h-0 relative z-10">
+      <div className="max-w-3xl mx-auto px-3 sm:px-4 pt-4 sm:pt-8 pb-20 w-full flex flex-col flex-1 min-h-0 relative z-10">
         <div className="shrink-0">
           <Header
             prizePool={data?.prizePool ?? 0}
@@ -70,6 +71,7 @@ export default function App() {
             currentUserId={currentUserId}
             onUserChange={setCurrentUserId}
             topPlayerId={topPlayerId}
+            lastPlayerId={lastPlayerId}
           />
         </div>
         <div className="flex-1 min-h-0 flex flex-col pb-4">

@@ -1,7 +1,6 @@
 import { PlayerRow } from "./PlayerRow";
 import type { Player } from "../types";
 
-//Tahmini kazanc hesaplama
 function calcPrize(rank: number, pool: number, totalCount: number): number {
   if (pool === 0) return 0;
   if (rank === 1) return pool * 0.2;
