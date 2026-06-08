@@ -22,9 +22,9 @@ const MedalCard = ({
   colorClass: string;
 }) => (
   <div
-    className={`bg-gradient-to-b border rounded-xl py-2 sm:py-2.5 flex flex-col items-center justify-center transform transition-transform hover:scale-105 cursor-default ${colorClass}`}
+    className={`bg-gradient-to-b border rounded-xl py-1 sm:py-1.5 flex flex-col items-center justify-center transform transition-transform hover:scale-105 cursor-default ${colorClass}`}
   >
-    <span className="text-2xl sm:text-3xl drop-shadow-lg mb-1">{icon}</span>
+    <span className="text-xl sm:text-2xl drop-shadow-lg mb-0.5">{icon}</span>
     <span
       className={`text-[11px] font-black uppercase tracking-wide ${colorClass.split(" ")[0].replace("from-", "text-").replace("/20", "")}`}
     >
@@ -72,6 +72,7 @@ export interface HeaderProps {
   onUserChange: (id: string) => void;
   topPlayerId?: string;
   lastPlayerId?: string;
+  commentary?: string;
 }
 
 export function Header({
@@ -81,12 +82,13 @@ export function Header({
   onUserChange,
   topPlayerId,
   lastPlayerId,
+  commentary,
 }: HeaderProps) {
   const weekRange = getWeekRange();
 
   return (
-    <div className="mb-4">
-      <div className="flex items-center justify-between mb-3">
+    <div className="mb-2">
+      <div className="flex items-center justify-between mb-2">
         <div>
           <p className="text-[10px] font-mono tracking-[0.2em] text-slate-400 uppercase mb-1">
             panteon.games
@@ -105,7 +107,7 @@ export function Header({
         )}
       </div>
 
-      <div className="border-y border-slate-700/60 py-3 flex flex-col gap-3">
+      <div className="border-y border-slate-700/60 py-2 flex flex-col gap-2">
         <div className="flex items-center justify-between gap-4">
           <div className="space-y-1.5">
             <p className="text-[10px] font-mono text-amber-400/90 uppercase tracking-widest font-extrabold flex items-center gap-2">
@@ -123,9 +125,9 @@ export function Header({
             </p>
           </div>
 
-          <p className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-amber-200 to-amber-500 tabular-nums leading-none shrink-0 font-mono drop-shadow-[0_0_15px_rgba(251,191,36,0.3)]">
+          <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-amber-200 to-amber-500 tabular-nums leading-none shrink-0 font-mono drop-shadow-[0_0_15px_rgba(251,191,36,0.3)]">
             {prizePool.toLocaleString("tr-TR", { maximumFractionDigits: 0 })}
-            <span className="text-xl sm:text-2xl md:text-3xl text-amber-400 ml-1">
+            <span className="text-lg sm:text-xl md:text-2xl text-amber-400 ml-1">
               ₺
             </span>
           </p>
@@ -161,7 +163,7 @@ export function Header({
         </div>
       </div>
 
-      <div className="flex items-center gap-2 pt-3 mt-1 min-w-0">
+      <div className="flex items-center gap-2 pt-2 min-w-0">
         <div className="flex items-center gap-2 overflow-x-auto flex-1 min-w-0 pb-0.5 scrollbar-none">
           <div className="flex items-center gap-2 bg-slate-900 border border-slate-700/60 text-slate-400 text-[10px] font-mono px-3 py-1.5 rounded-lg tracking-widest shadow-inner select-none shrink-0">
             <span className="relative flex h-2 w-2">
@@ -205,6 +207,30 @@ export function Header({
           </span>
         </div>
       </div>
+
+      {commentary && (
+        <div className="mt-2 mb-1 bg-gradient-to-r from-indigo-900/40 via-purple-900/20 to-transparent border-l-4 border-indigo-500 rounded-r-lg p-2 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(90deg,transparent_0%,rgba(99,102,241,0.1)_50%,transparent_100%)] animate-[shimmer_2s_infinite]" />
+
+          <div className="flex items-center gap-3 relative z-10 w-full">
+            <div className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-indigo-500/20 border border-indigo-400/30">
+              <span className="text-lg animate-pulse">🎙️</span>
+            </div>
+
+            <div className="flex-1 min-w-0 flex flex-col justify-center">
+              <p className="text-[9px] font-mono font-bold text-indigo-400 uppercase tracking-widest mb-0.5 shrink-0">
+                Canlı Leaderboard Anlatımı
+              </p>
+
+              <div className="relative overflow-hidden w-full h-5 flex items-center">
+                <p className="whitespace-nowrap text-sm text-indigo-100 font-medium italic animate-marquee pl-[100%]">
+                  "{commentary}"
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

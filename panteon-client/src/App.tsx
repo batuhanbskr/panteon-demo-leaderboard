@@ -10,6 +10,7 @@ export default function App() {
   const [initialLoad, setInitialLoad] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [currentUserId, setCurrentUserId] = useState("player_3665");
+  const top100 = data?.top100 ?? [];
 
   useEffect(() => {
     let mounted = true;
@@ -55,10 +56,10 @@ export default function App() {
     </div>
   );
 
-  const isInTop100 =
-    data?.top100.some((p) => p.userId === currentUserId) ?? false;
-  const topPlayerId = data?.top100[0]?.userId;
-  const lastPlayerId = data?.top100?.[data.top100.length - 1]?.userId;
+  const isInTop100 = top100.some((p) => p.userId === currentUserId) ?? false;
+  const topPlayerId = top100[0]?.userId;
+  const lastPlayerId = top100?.[top100.length - 1]?.userId;
+  const aiComment = data?.commentary;
 
   return (
     <div className="h-screen overflow-hidden flex flex-col bg-[#0f172a]">
@@ -72,6 +73,7 @@ export default function App() {
             onUserChange={setCurrentUserId}
             topPlayerId={topPlayerId}
             lastPlayerId={lastPlayerId}
+            commentary={aiComment}
           />
         </div>
         <div className="flex-1 min-h-0 flex flex-col pb-4">

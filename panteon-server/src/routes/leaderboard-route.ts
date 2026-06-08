@@ -97,11 +97,14 @@ router.get("/:userId", async (req, res) => {
       }
     }
 
+    const commentary = await redisClient.get("leaderboard:commentary");
+
     res.json({
       prizePool,
       top100,
       currentUser: currentUserData,
       surroundingPlayers,
+      commentary,
     });
   } catch (error) {
     console.error("Leaderboard getirme hatası:", error);

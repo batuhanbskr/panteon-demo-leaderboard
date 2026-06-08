@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import leaderboardRoutes from "./routes/leaderboard-route";
 import { startWeeklyRewardCron } from "./jobs/weeklyReward";
 import { startChaosBot } from "./jobs/simulationBot";
+import { startAiCommentator } from "./jobs/aiCommentador";
 
 dotenv.config();
 
@@ -24,4 +25,5 @@ app.listen(PORT, async () => {
   //CRON u cagirdik
   startWeeklyRewardCron();
   startChaosBot();
+  startAiCommentator();
 });

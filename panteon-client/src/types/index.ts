@@ -9,6 +9,7 @@ export interface LeaderboardResponse {
   top100: Player[];
   currentUser: Player | null;
   surroundingPlayers: Player[];
+  commentary?: string;
 }
 
 export interface AddScoreResponse {
